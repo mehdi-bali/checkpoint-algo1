@@ -1,0 +1,155 @@
+ALGORITHM array_solution
+
+VAR
+
+arr : ARRAY_OF INTEGER[50];
+
+tab : ARRAY_OF INTEGER[50];
+
+sum,i,j: INTEGER;
+
+
+
+//solution 1 avec un array:
+
+BEGIN
+
+sum:= 0;
+
+i:=0;
+
+j:=0;
+
+WHILE (tab.length-1) DO
+
+     WHILE (arr.length-1) DO
+
+        IF(Tab[i]=arr[j])THEN
+
+        break;
+
+        ELSE
+
+           sum:=sum+tab[i]
+
+        END_IF
+
+    END_WHILE
+
+END_WHILE
+
+WHILE (arr.length-1) DO
+
+     WHILE (tab.length-1) DO
+
+        IF(arr[j]=tab[i])THEN
+
+        break;
+
+        ELSE
+
+           sum:=sum+tab[j]
+
+        END_IF
+
+    END_WHILE
+
+END_WHILE
+
+write (sum);
+
+
+
+
+
+
+
+END
+
+//solution 2 avec HASH_TABLE
+
+
+
+ALGORITHM htab_solution
+
+VAR
+
+    htab : HASH_TABLE<integer,integer>;
+
+    tab : ARRAY_OF integer[100];
+
+    arr : ARRAY_OF integer[50];
+
+    i,j,y,sum: integer;
+
+
+
+BEGIN
+
+    read(arr[i]);
+
+    read(tab[j]);
+
+
+
+    //insert
+
+    FOR i FROM 0 TO tab.length-1   DO
+
+        htab.insert(tab[i],1);   
+
+    END_FOR
+
+    FOR j FROM 0 TO arr.length   DO
+
+        htab.insert(arr[j],1);
+
+    END_FOR
+
+    // parcour de la carte
+
+
+
+    FOR y FROM  0 TO htab.length-1   DO
+
+       if (htab.lookup(htab[i]=true))
+
+       then 
+
+       count := htab.get(htab[i]);
+
+       htab.insert(htab[i],count+1)
+
+
+
+        end if
+
+    END_FOR
+
+    // addition
+
+    sum:=0
+
+    FOR i from 0 to htab.length-1 DO
+
+
+
+    if (htab.get(htab[i])=1)
+
+    then
+
+    sum:=sum+htab[i];
+
+    break;
+
+    end if
+
+    end for
+
+
+
+    write(sum);
+
+
+
+END
